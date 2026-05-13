@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://cur3x2uq0q48w"]
+
+[ext_resource type="PackedScene" uid="uid://dt62nme44tgnj" path="res://ui/tree_nodes/dragable_component.tscn" id="1_73mmo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6jpge"]
+radius = 31.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_venx8"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.83137256, 0.6862745, 0.21568628, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csyis"]
+bg_color = Color(0.2159017, 0.21590173, 0.21590161, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.83137256, 0.6862745, 0.21568628, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ybrss"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.23529412, 0.1764706, 0.1764706, 1)
+corner_radius_top_left = 999
+corner_radius_top_right = 999
+corner_radius_bottom_right = 999
+corner_radius_bottom_left = 999
+corner_detail = 2
+
+[node name="medium_node" type="Node2D" unique_id=826069097]
+
+[node name="dragable_component" parent="." unique_id=290947999 instance=ExtResource("1_73mmo")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="dragable_component" unique_id=1581534205]
+shape = SubResource("CircleShape2D_6jpge")
+
+[node name="visuals" type="Control" parent="." unique_id=1380230117]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="fill" type="Panel" parent="visuals" unique_id=257762347]
+layout_mode = 0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_venx8")
+
+[node name="gold_ring" type="Panel" parent="visuals" unique_id=402900153]
+layout_mode = 0
+offset_left = -27.0
+offset_top = -27.0
+offset_right = 27.0
+offset_bottom = 27.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_csyis")
+
+[node name="border" type="Panel" parent="visuals" unique_id=1299971610]
+layout_mode = 0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ybrss")
