@@ -64,8 +64,8 @@ func try_unlock() -> void:
 
 func try_lock() -> void:
 	if can_lock():
-		is_unlocked = false
 		distance_to_source = -1
+		is_unlocked = false
 
 
 func update_distance_to_source() -> void:

@@ -50,6 +50,11 @@ right_click={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_5="sockets"
+2d_physics/layer_6="tree_hit_box"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

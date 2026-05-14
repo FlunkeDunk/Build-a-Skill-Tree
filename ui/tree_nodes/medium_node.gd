@@ -4,6 +4,7 @@ extends TreeNode
 @export var draggable_component: DraggableComponent
 
 
+
 func _ready() -> void:
 	super._ready()
 	unlockable.unlocked_changed.connect(

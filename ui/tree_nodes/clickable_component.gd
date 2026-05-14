@@ -20,6 +20,8 @@ var _right_press_position: Vector2
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
+	collision_layer = 0b00010000
+	collision_mask = 0b00010000
 
 func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):

@@ -11,7 +11,9 @@ var first_unlockable: UnlockableComponent
 var second_unlockable: UnlockableComponent
 
 
-var connection_line: TreeConnectionLine
+var connection_line: ConnectionLine2D
+var collision_line: Area2D
+
 
 func _ready() -> void:
 	setup()
@@ -45,7 +47,7 @@ func setup_line() -> void:
 	if connection_line:
 		connection_line.queue_free()
 	
-	connection_line = TreeConnectionLine.new()
+	connection_line = ConnectionLine2D.new()
 	add_child(connection_line)
 	
 	connection_line.start = first_node
@@ -57,6 +59,7 @@ func setup_line() -> void:
 	
 	show_behind_parent = true
 	update_line()
+	setup_collision()
 
 
 func is_bridged() -> bool:
@@ -85,6 +88,17 @@ func get_other_node(node: Node2D) -> Node2D:
 		return first_node
 	
 	return null
+
+
+func setup_collision() -> void:
+	var area := Area2D.new()
+	var collsion_shape := CollisionShape2D.new()
+	var segment := SegmentShape2D.new()
+	segment.a = to_local(first_node.global_position)
+	segment.b = to_local(second_node.global_position)
+	collsion_shape.shape = segment
+	area.add_child(collsion_shape)
+	add_child(area)
 
 
 func disconnect_and_free() -> void:

@@ -13,4 +13,4 @@ func _ready() -> void:
 	clickable.right_clicked.connect(unlockable.try_lock)
 	
 	unlockable.unlocked_changed.connect((
-		func(): distance_label.text = str(unlockable.distance_to_source)).unbind(1))
+		func() -> void: distance_label.text = str(unlockable.distance_to_source)).unbind(1))

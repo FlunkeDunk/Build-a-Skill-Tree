@@ -14,6 +14,9 @@ func _ready() -> void:
 	if not target:
 		target = get_parent() as Node2D
 	
+	
+	collision_layer = 0b00010000
+	collision_mask = 0b00010000
 	assert(target, "SocketComponent requires a Node2D target.")
 
 

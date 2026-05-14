@@ -1,4 +1,4 @@
-class_name TreeConnectionLine
+class_name ConnectionLine2D
 extends Line2D
 
 const CONNECTED_TEXTURE_UID: String = "uid://x065y5m5mobx"
@@ -34,3 +34,14 @@ func show_connection(is_unlocked: bool) -> void:
 		texture = load(CONNECTED_TEXTURE_UID)
 	else:
 		texture = load(DISCONNECTED_TEXTURE_UID)
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	

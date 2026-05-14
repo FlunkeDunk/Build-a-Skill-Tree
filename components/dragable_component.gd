@@ -37,7 +37,8 @@ func _ready() -> void:
 		clickable = owner.get_node_or_null("%ClickableComponent")
 
 	assert(clickable, "DraggableComponent requires a ClickableComponent.")
-
+	
+	
 	clickable.pressed.connect(_begin_drag)
 	clickable.released.connect(_end_drag)
 
