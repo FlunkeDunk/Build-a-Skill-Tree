@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cur3x2uq0q48w"]
 
 [ext_resource type="Script" uid="uid://3tcx7pu4mpea" path="res://components/dragable_component.gd" id="1_6jpge"]
-[ext_resource type="Script" uid="uid://6l32ct3kaxvs" path="res://ui/tree_nodes/medium_node.gd" id="1_vf24s"]
+[ext_resource type="Script" uid="uid://b1746t6obim2o" path="res://ui/tree_nodes/tree_node.gd" id="1_vf24s"]
 [ext_resource type="Script" uid="uid://odylt2oc2m0b" path="res://ui/tree_nodes/graph_node_component.gd" id="2_j6hne"]
 [ext_resource type="StyleBox" uid="uid://deu5dd0t703jd" path="res://resources/node_border_style_box.tres" id="2_w2w41"]
 [ext_resource type="Script" uid="uid://dpyfpattmjepv" path="res://ui/tree_nodes/node_border.gd" id="3_w2w41"]
@@ -20,10 +20,8 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 corner_detail = 12
 
-[node name="medium_node" type="Node2D" unique_id=826069097 node_paths=PackedStringArray("draggable_component", "unlockable", "clickable")]
+[node name="medium_node" type="Node2D" unique_id=826069097 node_paths=PackedStringArray("clickable")]
 script = ExtResource("1_vf24s")
-draggable_component = NodePath("DraggableComponent")
-unlockable = NodePath("GraphNodeComponent/UnlockableComponent")
 clickable = NodePath("ClickableComponent")
 
 [node name="ClickableComponent" type="Area2D" parent="." unique_id=488042829]
@@ -46,7 +44,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="border" type="Panel" parent="visuals" unique_id=1299971610 node_paths=PackedStringArray("unlockable", "clickable")]
+[node name="border" type="Panel" parent="visuals" unique_id=1299971610 node_paths=PackedStringArray("tree_node", "clickable")]
 layout_mode = 0
 offset_left = -30.0
 offset_top = -30.0
@@ -55,7 +53,7 @@ offset_bottom = 30.0
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("2_w2w41")
 script = ExtResource("3_w2w41")
-unlockable = NodePath("../../GraphNodeComponent/UnlockableComponent")
+tree_node = NodePath("../../TreeNodeComponent")
 clickable = NodePath("../../ClickableComponent")
 style_box = ExtResource("2_w2w41")
 
@@ -68,20 +66,12 @@ offset_bottom = 22.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_csyis")
 
-[node name="GraphNodeComponent" type="Node" parent="." unique_id=865365394]
+[node name="TreeNodeComponent" type="Node" parent="." unique_id=865365394]
 unique_name_in_owner = true
 script = ExtResource("2_j6hne")
+is_source = true
 metadata/_custom_type_script = "uid://odylt2oc2m0b"
 
-[node name="UnlockableComponent" type="Node" parent="GraphNodeComponent" unique_id=1255118970 node_paths=PackedStringArray("graph_node")]
-unique_name_in_owner = true
+[node name="UnlockableComponent" type="Node" parent="TreeNodeComponent" unique_id=1255118970 node_paths=PackedStringArray("graph_node")]
 script = ExtResource("7_3e1kg")
 graph_node = NodePath("..")
-
-[node name="distance_label" type="Label" parent="." unique_id=1759424436]
-offset_left = -20.0
-offset_top = -12.0
-offset_right = 20.0
-offset_bottom = 11.0
-text = "-1"
-horizontal_alignment = 1

@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://ojukx8a2ju0l"]
 
+[ext_resource type="Script" uid="uid://b52rsdef506fc" path="res://ui/tree_nodes/socket.gd" id="1_33nrv"]
 [ext_resource type="Script" uid="uid://dv8col3ds624e" path="res://ui/tree_nodes/socket_component.gd" id="1_n6bcq"]
+[ext_resource type="Script" uid="uid://odylt2oc2m0b" path="res://ui/tree_nodes/graph_node_component.gd" id="2_ukey7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n6bcq"]
 radius = 31.0
@@ -31,10 +33,15 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 corner_detail = 12
 
-[node name="socket" type="Node2D" unique_id=826069097]
+[node name="socket" type="Node2D" unique_id=826069097 node_paths=PackedStringArray("graph_node", "socket_component")]
+script = ExtResource("1_33nrv")
+graph_node = NodePath("GraphNodeComponent")
+socket_component = NodePath("socket_component")
 
-[node name="socket_component" type="Area2D" parent="." unique_id=597657044]
+[node name="socket_component" type="Area2D" parent="." unique_id=597657044 node_paths=PackedStringArray("target")]
+input_pickable = false
 script = ExtResource("1_n6bcq")
+target = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="socket_component" unique_id=601430083]
 shape = SubResource("CircleShape2D_n6bcq")
@@ -63,3 +70,8 @@ offset_right = 16.0
 offset_bottom = 16.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_eyshh")
+
+[node name="GraphNodeComponent" type="Node" parent="." unique_id=131627551]
+unique_name_in_owner = true
+script = ExtResource("2_ukey7")
+metadata/_custom_type_script = "uid://odylt2oc2m0b"

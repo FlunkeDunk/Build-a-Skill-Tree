@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cow5u4f3ygdps"]
+
+[ext_resource type="Script" uid="uid://bddwptev0ob3j" path="res://ui/tree_camera.gd" id="3_56kpk"]
+
+[node name="Node2D" type="Node2D" unique_id=306010348]
+
+[node name="tree_camera" type="Camera2D" parent="." unique_id=511033901]
+script = ExtResource("3_56kpk")
+min_zoom = 0.02
+max_zoom = 20.0

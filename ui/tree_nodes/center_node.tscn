@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://b3rg8hqby3pa8"]
+
+[ext_resource type="Script" uid="uid://odylt2oc2m0b" path="res://ui/tree_nodes/graph_node_component.gd" id="1_7mhlv"]
+[ext_resource type="Script" uid="uid://eusp38mrg8y8" path="res://ui/tree_nodes/unlockable_component.gd" id="2_8fmdn"]
+[ext_resource type="PackedScene" uid="uid://ojukx8a2ju0l" path="res://ui/tree_nodes/socket.tscn" id="3_8e7pm"]
+[ext_resource type="StyleBox" uid="uid://deu5dd0t703jd" path="res://resources/node_border_style_box.tres" id="4_r4c18"]
+[ext_resource type="Script" uid="uid://dpyfpattmjepv" path="res://ui/tree_nodes/node_border.gd" id="5_wt2da"]
+[ext_resource type="Script" uid="uid://70fu6a16eicv" path="res://ui/tree_nodes/graph_connection_component.gd" id="6_8fmdn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxsim"]
+bg_color = Color(0.2159017, 0.21590173, 0.21590161, 1)
+border_color = Color(0.83137256, 0.6862745, 0.21568628, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 12
+
+[node name="center_node" type="Node2D" unique_id=2078799429]
+
+[node name="GraphNodeComponent" type="Node" parent="." unique_id=282454603]
+unique_name_in_owner = true
+script = ExtResource("1_7mhlv")
+metadata/_custom_type_script = "uid://odylt2oc2m0b"
+
+[node name="UnlockableComponent" type="Node" parent="GraphNodeComponent" unique_id=1425120580 node_paths=PackedStringArray("graph_node")]
+unique_name_in_owner = true
+script = ExtResource("2_8fmdn")
+is_source = true
+graph_node = NodePath("..")
+is_unlocked = true
+metadata/_custom_type_script = "uid://eusp38mrg8y8"
+
+[node name="socket" parent="." unique_id=826069097 instance=ExtResource("3_8e7pm")]
+position = Vector2(82, 0)
+
+[node name="GraphConnectionComponent" type="Node2D" parent="socket" unique_id=2054905196 node_paths=PackedStringArray("first_node", "second_node")]
+script = ExtResource("6_8fmdn")
+first_node = NodePath("../..")
+second_node = NodePath("..")
+metadata/_custom_type_script = "uid://70fu6a16eicv"
+
+[node name="socket2" parent="." unique_id=785637628 instance=ExtResource("3_8e7pm")]
+position = Vector2(0, 82)
+
+[node name="GraphConnectionComponent" type="Node2D" parent="socket2" unique_id=957784731 node_paths=PackedStringArray("first_node", "second_node")]
+script = ExtResource("6_8fmdn")
+first_node = NodePath("../..")
+second_node = NodePath("..")
+metadata/_custom_type_script = "uid://70fu6a16eicv"
+
+[node name="socket3" parent="." unique_id=632607091 instance=ExtResource("3_8e7pm")]
+position = Vector2(-82, 0)
+
+[node name="GraphConnectionComponent" type="Node2D" parent="socket3" unique_id=403509278 node_paths=PackedStringArray("first_node", "second_node")]
+script = ExtResource("6_8fmdn")
+first_node = NodePath("../..")
+second_node = NodePath("..")
+metadata/_custom_type_script = "uid://70fu6a16eicv"
+
+[node name="socket4" parent="." unique_id=1053158332 instance=ExtResource("3_8e7pm")]
+position = Vector2(0, -82)
+
+[node name="GraphConnectionComponent" type="Node2D" parent="socket4" unique_id=1750293261 node_paths=PackedStringArray("first_node", "second_node")]
+script = ExtResource("6_8fmdn")
+first_node = NodePath("../..")
+second_node = NodePath("..")
+metadata/_custom_type_script = "uid://70fu6a16eicv"
+
+[node name="visuals" type="Control" parent="." unique_id=352347589]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="border" type="Panel" parent="visuals" unique_id=1847201349 node_paths=PackedStringArray("unlockable")]
+layout_mode = 0
+offset_left = -66.0
+offset_top = -66.0
+offset_right = 66.0
+offset_bottom = 66.0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("4_r4c18")
+script = ExtResource("5_wt2da")
+unlockable = NodePath("../../GraphNodeComponent/UnlockableComponent")
+style_box = ExtResource("4_r4c18")
+corner_detail = 3
+
+[node name="inner" type="Panel" parent="visuals" unique_id=1893691665]
+layout_mode = 0
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bxsim")

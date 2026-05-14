@@ -1,11 +1,17 @@
 [gd_scene format=3 uid="uid://b6hmhwxdfcqsq"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csyis"]
+[ext_resource type="Script" uid="uid://dpyfpattmjepv" path="res://ui/tree_nodes/node_border.gd" id="1_3oiix"]
+[ext_resource type="Script" uid="uid://odylt2oc2m0b" path="res://ui/tree_nodes/graph_node_component.gd" id="1_aoocl"]
+[ext_resource type="Script" uid="uid://b1746t6obim2o" path="res://ui/tree_nodes/tree_node.gd" id="1_orew8"]
+[ext_resource type="StyleBox" uid="uid://deu5dd0t703jd" path="res://resources/node_border_style_box.tres" id="1_tvy5y"]
+[ext_resource type="Script" uid="uid://dvmi2m2txeu2e" path="res://ui/tree_nodes/clickable_component.gd" id="4_r857k"]
+[ext_resource type="Script" uid="uid://eusp38mrg8y8" path="res://ui/tree_nodes/unlockable_component.gd" id="6_6et68"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_orew8"]
+radius = 21.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64hav"]
 bg_color = Color(0.2159017, 0.21590173, 0.21590161, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
 border_color = Color(0.83137256, 0.6862745, 0.21568628, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
@@ -13,32 +19,56 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 corner_detail = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7sbui"]
-bg_color = Color(0, 0, 0, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.23529412, 0.1764706, 0.1764706, 1)
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
+[node name="small_node" type="Node2D" unique_id=826069097 node_paths=PackedStringArray("unlockable", "clickable")]
+script = ExtResource("1_orew8")
+unlockable = NodePath("GraphNodeComponent/UnlockableComponent")
+clickable = NodePath("ClickableComponent")
 
-[node name="small_node" type="Node2D" unique_id=826069097]
+[node name="ClickableComponent" type="Area2D" parent="." unique_id=1083830796]
+unique_name_in_owner = true
+script = ExtResource("4_r857k")
+metadata/_custom_type_script = "uid://dvmi2m2txeu2e"
 
-[node name="gold_ring" type="Panel" parent="." unique_id=402900153]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableComponent" unique_id=772038960]
+shape = SubResource("CircleShape2D_orew8")
+
+[node name="border" type="Panel" parent="." unique_id=1299971610 node_paths=PackedStringArray("unlockable", "clickable")]
 clip_contents = true
 offset_left = -21.0
 offset_top = -21.0
 offset_right = 21.0
 offset_bottom = 21.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_csyis")
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("1_tvy5y")
+script = ExtResource("1_3oiix")
+unlockable = NodePath("../GraphNodeComponent/UnlockableComponent")
+clickable = NodePath("../ClickableComponent")
+style_box = ExtResource("1_tvy5y")
+corner_detail = 8
 
-[node name="border" type="Panel" parent="." unique_id=1299971610]
-clip_contents = true
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_7sbui")
+[node name="inner" type="Panel" parent="." unique_id=1928904176]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_64hav")
+
+[node name="GraphNodeComponent" type="Node" parent="." unique_id=795710935]
+unique_name_in_owner = true
+script = ExtResource("1_aoocl")
+metadata/_custom_type_script = "uid://odylt2oc2m0b"
+
+[node name="UnlockableComponent" type="Node" parent="GraphNodeComponent" unique_id=1857833972 node_paths=PackedStringArray("graph_node")]
+unique_name_in_owner = true
+script = ExtResource("6_6et68")
+graph_node = NodePath("..")
+metadata/_custom_type_script = "uid://eusp38mrg8y8"
+
+[node name="distance_label" type="Label" parent="." unique_id=1722113514]
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 20.0
+offset_bottom = 11.0
+text = "-1"
+horizontal_alignment = 1

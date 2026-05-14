@@ -1,132 +1,57 @@
 [gd_scene format=3 uid="uid://dn30vrbt8g7mt"]
 
-[ext_resource type="PackedScene" uid="uid://b6hmhwxdfcqsq" path="res://ui/tree_nodes/small_node.tscn" id="1_6l7je"]
-[ext_resource type="PackedScene" uid="uid://cur3x2uq0q48w" path="res://ui/tree_nodes/medium_node.tscn" id="2_jv6wh"]
-[ext_resource type="PackedScene" uid="uid://ojukx8a2ju0l" path="res://ui/tree_nodes/socket.tscn" id="3_jv6wh"]
-[ext_resource type="Script" uid="uid://bdgc0p82wr16t" path="res://ui/tree_nodes/tree_connection.gd" id="4_x6ack"]
-[ext_resource type="Script" uid="uid://bddwptev0ob3j" path="res://Scenes/tree_camera.gd" id="5_iacmt"]
-
-[sub_resource type="Gradient" id="Gradient_6l7je"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.125, 0.875)
-colors = PackedColorArray(0.23529412, 0.1764706, 0.1764706, 1, 0.83137256, 0.6862745, 0.21568628, 1, 0.23529412, 0.1764706, 0.1764706, 1)
-metadata/_snap_enabled = true
-metadata/_snap_count = 8
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jv6wh"]
-gradient = SubResource("Gradient_6l7je")
-fill_from = Vector2(1, 1)
+[ext_resource type="PackedScene" uid="uid://bffeh5xdbmtj4" path="res://ui/tree_nodes/tree_module.tscn" id="2_pw63i"]
+[ext_resource type="PackedScene" uid="uid://b3rg8hqby3pa8" path="res://ui/tree_nodes/center_node.tscn" id="4_pu3yx"]
+[ext_resource type="Script" uid="uid://bddwptev0ob3j" path="res://ui/tree_camera.gd" id="5_iacmt"]
 
 [node name="Node2D" type="Node2D" unique_id=210561232]
-
-[node name="medium_node" parent="." unique_id=1250460022 instance=ExtResource("2_jv6wh")]
-position = Vector2(308, 206)
-
-[node name="tree_connection" type="Line2D" parent="medium_node" unique_id=428765353 node_paths=PackedStringArray("start", "end")]
-show_behind_parent = true
-position = Vector2(-308, -206)
-points = PackedVector2Array(308, 206, 404, 206)
-width = 8.0
-texture = SubResource("GradientTexture2D_jv6wh")
-texture_mode = 2
-script = ExtResource("4_x6ack")
-start = NodePath("..")
-end = NodePath("../small_node")
-
-[node name="tree_connection2" type="Line2D" parent="medium_node" unique_id=650709020 node_paths=PackedStringArray("start", "end")]
-show_behind_parent = true
-position = Vector2(-308, -206)
-points = PackedVector2Array(404, 206, 500, 206)
-width = 8.0
-texture = SubResource("GradientTexture2D_jv6wh")
-texture_mode = 2
-script = ExtResource("4_x6ack")
-start = NodePath("../small_node")
-end = NodePath("../socket")
-
-[node name="small_node" parent="medium_node" unique_id=826069097 instance=ExtResource("1_6l7je")]
-position = Vector2(96, 0)
-
-[node name="socket" parent="medium_node" unique_id=1550755372 instance=ExtResource("3_jv6wh")]
-position = Vector2(192, 0)
-
-[node name="medium_node3" parent="." unique_id=1228781877 instance=ExtResource("2_jv6wh")]
-position = Vector2(337, 382)
-
-[node name="tree_connection" type="Line2D" parent="medium_node3" unique_id=1721579538 node_paths=PackedStringArray("start", "end")]
-show_behind_parent = true
-position = Vector2(-308, -206)
-points = PackedVector2Array(308, 206, 369, 296)
-width = 8.0
-texture = SubResource("GradientTexture2D_jv6wh")
-texture_mode = 2
-script = ExtResource("4_x6ack")
-start = NodePath("..")
-end = NodePath("../small_node")
-
-[node name="tree_connection2" type="Line2D" parent="medium_node3" unique_id=1085635718 node_paths=PackedStringArray("start", "end")]
-show_behind_parent = true
-position = Vector2(-308, -206)
-points = PackedVector2Array(369, 296, 475, 287)
-width = 8.0
-texture = SubResource("GradientTexture2D_jv6wh")
-texture_mode = 2
-script = ExtResource("4_x6ack")
-start = NodePath("../small_node")
-end = NodePath("../socket")
-
-[node name="small_node" parent="medium_node3" unique_id=1968853109 instance=ExtResource("1_6l7je")]
-position = Vector2(61, 90)
-
-[node name="socket" parent="medium_node3" unique_id=1446822697 instance=ExtResource("3_jv6wh")]
-position = Vector2(167, 81)
-
-[node name="medium_node2" parent="." unique_id=1851328557 instance=ExtResource("2_jv6wh")]
-position = Vector2(639, 325)
-
-[node name="tree_connection" type="Line2D" parent="medium_node2" unique_id=1051823689 node_paths=PackedStringArray("start", "end")]
-show_behind_parent = true
-position = Vector2(-308, -206)
-points = PackedVector2Array(308, 206, 306, 307)
-width = 8.0
-texture = SubResource("GradientTexture2D_jv6wh")
-texture_mode = 2
-script = ExtResource("4_x6ack")
-start = NodePath("..")
-end = NodePath("../small_node")
-
-[node name="tree_connection2" type="Line2D" parent="medium_node2" unique_id=91549091 node_paths=PackedStringArray("start", "end")]
-show_behind_parent = true
-position = Vector2(-308, -206)
-points = PackedVector2Array(308, 206, 310, 109)
-width = 8.0
-texture = SubResource("GradientTexture2D_jv6wh")
-texture_mode = 2
-script = ExtResource("4_x6ack")
-start = NodePath("..")
-end = NodePath("../small_node2")
-
-[node name="tree_connection3" type="Line2D" parent="medium_node2" unique_id=1750758276 node_paths=PackedStringArray("start", "end")]
-show_behind_parent = true
-position = Vector2(-308, -206)
-points = PackedVector2Array(308, 206, 475, 287)
-width = 8.0
-texture = SubResource("GradientTexture2D_jv6wh")
-texture_mode = 2
-script = ExtResource("4_x6ack")
-start = NodePath("..")
-end = NodePath("../socket")
-
-[node name="small_node" parent="medium_node2" unique_id=908105241 instance=ExtResource("1_6l7je")]
-position = Vector2(-2, 101)
-
-[node name="small_node2" parent="medium_node2" unique_id=366290146 instance=ExtResource("1_6l7je")]
-position = Vector2(2, -97)
-
-[node name="socket" parent="medium_node2" unique_id=423769954 instance=ExtResource("3_jv6wh")]
-position = Vector2(167, 81)
 
 [node name="tree_camera" type="Camera2D" parent="." unique_id=222333820]
 script = ExtResource("5_iacmt")
 min_zoom = 0.02
 max_zoom = 20.0
+
+[node name="background" type="CanvasLayer" parent="." unique_id=1575828051]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="background" unique_id=1100715247]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+
+[node name="TreeModule" parent="." unique_id=685054630 instance=ExtResource("2_pw63i")]
+position = Vector2(185, -19)
+
+[node name="TreeModule2" parent="." unique_id=275127640 instance=ExtResource("2_pw63i")]
+position = Vector2(144, 132)
+rotation = 0.7853982
+
+[node name="TreeModule3" parent="." unique_id=1701874890 instance=ExtResource("2_pw63i")]
+position = Vector2(0, 228)
+rotation = 1.5707964
+
+[node name="TreeModule4" parent="." unique_id=1001436423 instance=ExtResource("2_pw63i")]
+position = Vector2(-177, 123)
+rotation = 2.3561945
+
+[node name="TreeModule5" parent="." unique_id=31617126 instance=ExtResource("2_pw63i")]
+position = Vector2(-277, -25.999985)
+rotation = 3.1415927
+
+[node name="TreeModule6" parent="." unique_id=649388100 instance=ExtResource("2_pw63i")]
+position = Vector2(-156, -159)
+rotation = 3.9269907
+
+[node name="TreeModule7" parent="." unique_id=1630361773 instance=ExtResource("2_pw63i")]
+position = Vector2(-18, -217)
+rotation = 4.712389
+
+[node name="TreeModule8" parent="." unique_id=1224855040 instance=ExtResource("2_pw63i")]
+position = Vector2(145.99998, -178)
+rotation = 5.497787
+
+[node name="center_node" parent="." unique_id=2078799429 instance=ExtResource("4_pu3yx")]
