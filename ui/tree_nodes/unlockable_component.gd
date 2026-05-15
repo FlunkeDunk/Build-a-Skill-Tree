@@ -29,10 +29,10 @@ func can_unlock() -> bool:
 
 	for c: GraphConnectionComponent in graph_node.connections:
 		var unlockable := c.get_other_unlockable(self)
-
+		
 		if unlockable and unlockable.is_unlocked:
 			return true
-
+	
 	return false
 
 func can_lock() -> bool:

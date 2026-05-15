@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://c6jqrw5ms7u7x"]
+
+[ext_resource type="PackedScene" uid="uid://cur3x2uq0q48w" path="res://ui/tree_nodes/medium_node.tscn" id="1_a0eba"]
+[ext_resource type="PackedScene" uid="uid://ojukx8a2ju0l" path="res://ui/tree_nodes/socket.tscn" id="2_safyy"]
+[ext_resource type="Script" uid="uid://ctxiqkemajqhv" path="res://ui/tree_nodes/tree_hit_box.gd" id="3_k6rcx"]
+[ext_resource type="Script" uid="uid://70fu6a16eicv" path="res://ui/tree_nodes/graph_connection_component.gd" id="4_yg3up"]
+[ext_resource type="PackedScene" uid="uid://b6hmhwxdfcqsq" path="res://ui/tree_nodes/small_node.tscn" id="5_r66db"]
+
+[node name="TreeModule5" type="Node2D" unique_id=685054630]
+
+[node name="medium_node" parent="." unique_id=826069097 node_paths=PackedStringArray("hit_box") instance=ExtResource("1_a0eba")]
+hit_box = NodePath("TreeHitBox")
+
+[node name="socket" parent="medium_node" unique_id=1191894428 instance=ExtResource("2_safyy")]
+position = Vector2(115, -180)
+
+[node name="TreeHitBox" type="Area2D" parent="medium_node" unique_id=1801447535]
+unique_name_in_owner = true
+script = ExtResource("3_k6rcx")
+
+[node name="TreeConnectionComponent" type="Node2D" parent="medium_node" unique_id=795080515 node_paths=PackedStringArray("first_node", "second_node", "tree_hit_box")]
+script = ExtResource("4_yg3up")
+first_node = NodePath("..")
+second_node = NodePath("../small_node")
+tree_hit_box = NodePath("../TreeHitBox")
+metadata/_custom_type_script = "uid://70fu6a16eicv"
+
+[node name="TreeConnectionComponent2" type="Node2D" parent="medium_node" unique_id=1168286857 node_paths=PackedStringArray("first_node", "second_node", "tree_hit_box")]
+script = ExtResource("4_yg3up")
+first_node = NodePath("../small_node2")
+second_node = NodePath("../small_node")
+tree_hit_box = NodePath("../TreeHitBox")
+metadata/_custom_type_script = "uid://70fu6a16eicv"
+
+[node name="TreeConnectionComponent3" type="Node2D" parent="medium_node" unique_id=1458847455 node_paths=PackedStringArray("first_node", "second_node", "tree_hit_box")]
+script = ExtResource("4_yg3up")
+first_node = NodePath("../small_node2")
+second_node = NodePath("../small_node3")
+tree_hit_box = NodePath("../TreeHitBox")
+metadata/_custom_type_script = "uid://70fu6a16eicv"
+
+[node name="TreeConnectionComponent4" type="Node2D" parent="medium_node" unique_id=2127027714 node_paths=PackedStringArray("first_node", "second_node", "tree_hit_box")]
+script = ExtResource("4_yg3up")
+first_node = NodePath("../small_node3")
+second_node = NodePath("../socket")
+tree_hit_box = NodePath("../TreeHitBox")
+metadata/_custom_type_script = "uid://70fu6a16eicv"
+
+[node name="small_node" parent="medium_node" unique_id=1115322667 instance=ExtResource("5_r66db")]
+position = Vector2(96, 49)
+
+[node name="small_node2" parent="medium_node" unique_id=688953106 instance=ExtResource("5_r66db")]
+position = Vector2(62, -94)
+
+[node name="small_node3" parent="medium_node" unique_id=2118172063 instance=ExtResource("5_r66db")]
+position = Vector2(9, -227)
+
+[node name="Node" type="Node" parent="medium_node" unique_id=1066819632]

@@ -22,6 +22,10 @@ func _ready() -> void:
 	mouse_exited.connect(_on_mouse_exited)
 	collision_layer = 0b00010000
 	collision_mask = 0b00010000
+	
+	for child: CollisionShape2D in get_children():
+		child.debug_color = Color(0.0, 0.0, 0.0, 0.0)
+		
 
 func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):

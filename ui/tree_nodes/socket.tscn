@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b52rsdef506fc" path="res://ui/tree_nodes/socket.gd" id="1_33nrv"]
 [ext_resource type="Script" uid="uid://dv8col3ds624e" path="res://ui/tree_nodes/socket_component.gd" id="1_n6bcq"]
 [ext_resource type="Script" uid="uid://odylt2oc2m0b" path="res://ui/tree_nodes/graph_node_component.gd" id="2_ukey7"]
+[ext_resource type="Script" uid="uid://c86ja6htg0rs5" path="res://ui/tree_nodes/graph_collision_component.gd" id="4_fl06n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n6bcq"]
 radius = 31.0
@@ -33,17 +34,22 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 corner_detail = 12
 
-[node name="socket" type="Node2D" unique_id=826069097 node_paths=PackedStringArray("graph_node", "socket_component")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_230qk"]
+radius = 20.0
+
+[node name="socket" type="Node2D" unique_id=826069097 node_paths=PackedStringArray("graph_node", "socket_component", "graph_collision_component")]
 script = ExtResource("1_33nrv")
 graph_node = NodePath("GraphNodeComponent")
-socket_component = NodePath("socket_component")
+socket_component = NodePath("SocketComponent")
+graph_collision_component = NodePath("GraphCollisionComponent")
 
-[node name="socket_component" type="Area2D" parent="." unique_id=597657044 node_paths=PackedStringArray("target")]
+[node name="SocketComponent" type="Area2D" parent="." unique_id=597657044 node_paths=PackedStringArray("target")]
+unique_name_in_owner = true
 input_pickable = false
 script = ExtResource("1_n6bcq")
 target = NodePath("..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="socket_component" unique_id=601430083]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SocketComponent" unique_id=601430083]
 shape = SubResource("CircleShape2D_n6bcq")
 
 [node name="visuals" type="Control" parent="." unique_id=1380230117]
@@ -75,3 +81,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_eyshh")
 unique_name_in_owner = true
 script = ExtResource("2_ukey7")
 metadata/_custom_type_script = "uid://odylt2oc2m0b"
+
+[node name="GraphCollisionComponent" type="Node" parent="." unique_id=2119563009]
+script = ExtResource("4_fl06n")
+shape = SubResource("CircleShape2D_230qk")
+metadata/_custom_type_script = "uid://c86ja6htg0rs5"

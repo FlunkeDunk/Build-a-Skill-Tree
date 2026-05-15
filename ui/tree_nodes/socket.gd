@@ -3,6 +3,7 @@ extends Node2D
 
 @export var graph_node: GraphNodeComponent
 @export var socket_component: SocketComponent
+@export var graph_collision_component: GraphCollisionComponent
 
 var temp_connections: Array[GraphConnectionComponent]
 
@@ -10,8 +11,14 @@ func _ready() -> void:
 	socket_component.new_socketed.connect(connect_nodes)
 	socket_component.unsocketed.connect(disconnect_nodes)
 	
-
-
+	
+	socket_component.new_socketed.connect(graph_collision_component.disable.unbind(1))
+	socket_component.try_attach_begun.connect(graph_collision_component.disable)
+	
+	socket_component.try_attach_failed.connect(func() -> void: if not socket_component.socketed: graph_collision_component.enable())
+	socket_component.unsocketed.connect(graph_collision_component.enable)
+	
+	
 func connect_nodes(socketed: DraggableComponent) -> void:
 	var socketed_node: Node2D = socketed.owner
 	
@@ -23,7 +30,7 @@ func connect_nodes(socketed: DraggableComponent) -> void:
 		var temp_connection := GraphConnectionComponent.new()
 		temp_connection.first_node = socketed_node
 		temp_connection.second_node = connection.get_other_node(self)
-		add_child(temp_connection)
+		get_parent().add_child(temp_connection)
 		temp_connections.append(temp_connection)
 	
 	

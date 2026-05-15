@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dpyfpattmjepv" path="res://ui/tree_nodes/node_border.gd" id="3_w2w41"]
 [ext_resource type="Script" uid="uid://dvmi2m2txeu2e" path="res://ui/tree_nodes/clickable_component.gd" id="5_7kxxr"]
 [ext_resource type="Script" uid="uid://eusp38mrg8y8" path="res://ui/tree_nodes/unlockable_component.gd" id="7_3e1kg"]
+[ext_resource type="Script" uid="uid://c86ja6htg0rs5" path="res://ui/tree_nodes/graph_collision_component.gd" id="8_v12pc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6jpge"]
 radius = 31.0
@@ -19,6 +20,9 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 corner_detail = 12
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3qnm6"]
+radius = 20.0
 
 [node name="medium_node" type="Node2D" unique_id=826069097 node_paths=PackedStringArray("draggable_component", "unlockable", "clickable")]
 script = ExtResource("1_vf24s")
@@ -85,3 +89,8 @@ offset_right = 20.0
 offset_bottom = 11.0
 text = "-1"
 horizontal_alignment = 1
+
+[node name="GraphCollisionComponent" type="Node" parent="." unique_id=1462381771]
+script = ExtResource("8_v12pc")
+shape = SubResource("CircleShape2D_3qnm6")
+metadata/_custom_type_script = "uid://c86ja6htg0rs5"

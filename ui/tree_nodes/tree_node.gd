@@ -4,6 +4,7 @@ extends Node2D
 
 @export var unlockable: UnlockableComponent
 @export var clickable: ClickableComponent
+@export var hit_box: TreeHitBox
 @onready var distance_label: Label = $distance_label
 
 

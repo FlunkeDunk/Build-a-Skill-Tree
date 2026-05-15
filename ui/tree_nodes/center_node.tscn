@@ -6,6 +6,7 @@
 [ext_resource type="StyleBox" uid="uid://deu5dd0t703jd" path="res://resources/node_border_style_box.tres" id="4_r4c18"]
 [ext_resource type="Script" uid="uid://dpyfpattmjepv" path="res://ui/tree_nodes/node_border.gd" id="5_wt2da"]
 [ext_resource type="Script" uid="uid://70fu6a16eicv" path="res://ui/tree_nodes/graph_connection_component.gd" id="6_8fmdn"]
+[ext_resource type="Script" uid="uid://ctxiqkemajqhv" path="res://ui/tree_nodes/tree_hit_box.gd" id="7_8e7pm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxsim"]
 bg_color = Color(0.2159017, 0.21590173, 0.21590161, 1)
@@ -15,6 +16,9 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 corner_detail = 12
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r4c18"]
+radius = 57.0
 
 [node name="center_node" type="Node2D" unique_id=2078799429]
 
@@ -95,3 +99,10 @@ offset_right = 22.0
 offset_bottom = 22.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bxsim")
+
+[node name="TreeHitBox" type="Area2D" parent="." unique_id=1804066389]
+script = ExtResource("7_8e7pm")
+metadata/_custom_type_script = "uid://ctxiqkemajqhv"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TreeHitBox" unique_id=1657638657]
+shape = SubResource("CircleShape2D_r4c18")

@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://dn30vrbt8g7mt"]
 
-[ext_resource type="PackedScene" uid="uid://bffeh5xdbmtj4" path="res://ui/tree_nodes/tree_module.tscn" id="2_pw63i"]
+[ext_resource type="PackedScene" uid="uid://bffeh5xdbmtj4" path="res://scenes/tree_modules/tree_module.tscn" id="2_pw63i"]
+[ext_resource type="PackedScene" uid="uid://dsltaj3jyob6u" path="res://scenes/tree_modules/tree_module_2.tscn" id="4_c16ls"]
 [ext_resource type="PackedScene" uid="uid://b3rg8hqby3pa8" path="res://ui/tree_nodes/center_node.tscn" id="4_pu3yx"]
+[ext_resource type="PackedScene" uid="uid://dpruumw8k6vsi" path="res://scenes/tree_modules/tree_module_3.tscn" id="5_18nlu"]
 [ext_resource type="Script" uid="uid://bddwptev0ob3j" path="res://ui/tree_camera.gd" id="5_iacmt"]
+[ext_resource type="PackedScene" uid="uid://djdvpe0evv4sp" path="res://scenes/tree_modules/tree_module_4.tscn" id="6_c1pb6"]
+[ext_resource type="PackedScene" uid="uid://du1274r0hlm7w" path="res://scenes/tree_modules/tree_module_5.tscn" id="7_6wevv"]
+[ext_resource type="PackedScene" uid="uid://c6jqrw5ms7u7x" path="res://scenes/tree_modules/tree_module_6.tscn" id="8_18nlu"]
 
 [node name="Node2D" type="Node2D" unique_id=210561232]
 
@@ -23,35 +28,40 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.10747976, 0.10747973, 0.10747973, 1)
 
-[node name="TreeModule" parent="." unique_id=685054630 instance=ExtResource("2_pw63i")]
-position = Vector2(185, -19)
-
-[node name="TreeModule2" parent="." unique_id=275127640 instance=ExtResource("2_pw63i")]
-position = Vector2(144, 132)
-rotation = 0.7853982
-
-[node name="TreeModule3" parent="." unique_id=1701874890 instance=ExtResource("2_pw63i")]
-position = Vector2(0, 228)
-rotation = 1.5707964
-
-[node name="TreeModule4" parent="." unique_id=1001436423 instance=ExtResource("2_pw63i")]
-position = Vector2(-177, 123)
-rotation = 2.3561945
-
-[node name="TreeModule5" parent="." unique_id=31617126 instance=ExtResource("2_pw63i")]
-position = Vector2(-277, -25.999985)
-rotation = 3.1415927
-
-[node name="TreeModule6" parent="." unique_id=649388100 instance=ExtResource("2_pw63i")]
-position = Vector2(-156, -159)
-rotation = 3.9269907
-
-[node name="TreeModule7" parent="." unique_id=1630361773 instance=ExtResource("2_pw63i")]
-position = Vector2(-18, -217)
-rotation = 4.712389
-
-[node name="TreeModule8" parent="." unique_id=1224855040 instance=ExtResource("2_pw63i")]
-position = Vector2(145.99998, -178)
-rotation = 5.497787
-
 [node name="center_node" parent="." unique_id=2078799429 instance=ExtResource("4_pu3yx")]
+
+[node name="TreeModule" parent="." unique_id=685054630 instance=ExtResource("2_pw63i")]
+position = Vector2(-576, -485)
+
+[node name="TreeModule7" parent="." unique_id=1502229358 instance=ExtResource("2_pw63i")]
+position = Vector2(601, -66)
+
+[node name="TreeModule8" parent="." unique_id=444993002 instance=ExtResource("2_pw63i")]
+position = Vector2(-17, 250)
+
+[node name="TreeModule9" parent="." unique_id=804107801 instance=ExtResource("2_pw63i")]
+position = Vector2(531, -301)
+rotation = -1.5707964
+
+[node name="TreeModule10" parent="." unique_id=539539452 instance=ExtResource("2_pw63i")]
+position = Vector2(401, -557)
+rotation = -3.1415927
+
+[node name="TreeModule11" parent="." unique_id=2131303564 instance=ExtResource("2_pw63i")]
+position = Vector2(71, -533)
+rotation = -4.712389
+
+[node name="TreeModule2" parent="." unique_id=1312263192 instance=ExtResource("4_c16ls")]
+position = Vector2(-475, 211)
+
+[node name="TreeModule3" parent="." unique_id=170379986 instance=ExtResource("5_18nlu")]
+position = Vector2(354, 145)
+
+[node name="TreeModule4" parent="." unique_id=865254582 instance=ExtResource("6_c1pb6")]
+position = Vector2(-188, 147)
+
+[node name="TreeModule5" parent="." unique_id=2134669913 instance=ExtResource("7_6wevv")]
+position = Vector2(-491, 2)
+
+[node name="TreeModule6" parent="." unique_id=1261226910 instance=ExtResource("8_18nlu")]
+position = Vector2(-215, -141)

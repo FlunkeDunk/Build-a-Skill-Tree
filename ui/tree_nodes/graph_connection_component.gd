@@ -1,8 +1,9 @@
 class_name GraphConnectionComponent
 extends Node2D
 
-@export var first_node: Node
-@export var second_node: Node
+@export var first_node: Node2D
+@export var second_node: Node2D
+@export var tree_hit_box: Area2D
 
 var first_node_component: GraphNodeComponent
 var second_node_component: GraphNodeComponent
@@ -12,7 +13,6 @@ var second_unlockable: UnlockableComponent
 
 
 var connection_line: ConnectionLine2D
-var collision_line: Area2D
 
 
 func _ready() -> void:
@@ -20,7 +20,7 @@ func _ready() -> void:
 	
 	
 func setup() -> void:
-	assert(first_node and second_node, "GraphConnectionComponent requires two Node2D nodes.")
+	assert(first_node and second_node and first_node != second_node, "GraphConnectionComponent requires two Node2D nodes.")
 	
 	first_node_component = first_node.get_node("%GraphNodeComponent") as GraphNodeComponent
 	second_node_component = second_node.get_node("%GraphNodeComponent") as GraphNodeComponent
@@ -34,14 +34,7 @@ func setup() -> void:
 	second_node_component.add_connection(self)
 	
 	setup_line()
-	
-	
-func can_connect() -> bool:
-	return (
-		(first_unlockable and first_unlockable.is_unlocked)
-		or
-		(second_unlockable and second_unlockable.is_unlocked)
-	)
+
 
 func setup_line() -> void:
 	if connection_line:
@@ -54,12 +47,16 @@ func setup_line() -> void:
 	connection_line.end = second_node
 	
 	if first_unlockable and second_unlockable:
-		first_unlockable.unlocked_changed.connect(update_line.unbind(1))
-		second_unlockable.unlocked_changed.connect(update_line.unbind(1))
+		var callable := update_line.unbind(1)
+		first_unlockable.unlocked_changed.connect(callable)
+		if second_unlockable != first_unlockable:
+			second_unlockable.unlocked_changed.connect(callable)
 	
 	show_behind_parent = true
 	update_line()
-	setup_collision()
+
+	if tree_hit_box:
+		setup_collision()
 
 
 func is_bridged() -> bool:
@@ -91,14 +88,21 @@ func get_other_node(node: Node2D) -> Node2D:
 
 
 func setup_collision() -> void:
-	var area := Area2D.new()
 	var collsion_shape := CollisionShape2D.new()
 	var segment := SegmentShape2D.new()
-	segment.a = to_local(first_node.global_position)
-	segment.b = to_local(second_node.global_position)
+	
+	var first_pos := to_local(first_node.global_position)
+	var second_pos := to_local(second_node.global_position)
+	
+	var direction: Vector2 = (second_pos - first_pos).normalized()
+	
+	first_pos += direction * 25
+	second_pos -= direction * 25
+	
+	segment.a = first_pos
+	segment.b = second_pos
 	collsion_shape.shape = segment
-	area.add_child(collsion_shape)
-	add_child(area)
+	tree_hit_box.add_child(collsion_shape)
 
 
 func disconnect_and_free() -> void:

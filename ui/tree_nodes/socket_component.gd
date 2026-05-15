@@ -1,6 +1,9 @@
 extends Area2D
 class_name SocketComponent
 
+
+signal try_attach_begun
+signal try_attach_failed
 signal new_socketed(socketed: DraggableComponent)
 signal unsocketed
 
@@ -21,9 +24,11 @@ func _ready() -> void:
 
 
 func try_attach(candidate: DraggableComponent) -> bool:
+	try_attach_begun.emit()
 	if not can_attach(candidate):
+		try_attach_failed.emit()
 		return false
-
+	
 	if candidate.current_socket:
 		candidate.current_socket.un_attach()
 
@@ -37,10 +42,22 @@ func try_attach(candidate: DraggableComponent) -> bool:
 
 
 func un_attach() -> void:
+	socketed.target.reparent(socketed.original_target_parent)
 	socketed.current_socket = null
 	socketed = null
 	unsocketed.emit()
 
 
 func can_attach(candidate: DraggableComponent) -> bool:
-	return socketed == candidate or socketed == null
+	if socketed == candidate:
+		return true
+	if socketed:
+		return false
+	
+	var test_transform := Transform2D(candidate.target.global_rotation, target.global_position)
+	var collided := candidate.would_collide_at_transform(test_transform)
+	print("socket collision result is ", collided)
+	return not collided
+	
+	
+	

@@ -42,5 +42,5 @@ func hover_border(hovering: bool) -> void:
 	if unlockable.is_unlocked:
 		return
 	
-	#style_box.bg_color = hover_color if hovering and unlockable.can_unlock() else locked_color
+	style_box.bg_color = hover_color if hovering and unlockable.can_unlock() else locked_color
 	
